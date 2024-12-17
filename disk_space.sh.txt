@@ -1,0 +1,24 @@
+#!/bin/bash
+
+generate_report() {
+    local report_file="/opt/csk/system_health_$(date +%F).txt"
+
+    echo "System Health Report - $(date)" > "$report_file"
+    echo >> "$report_file"
+
+    echo "Disk Usage:" >> "$report_file"
+    df -h >> "$report_file"
+    echo >> "$report_file"
+
+    echo "Memory Usage:" >> "$report_file"
+    free -h >> "$report_file"
+    echo >> "$report_file"
+
+    echo "UPTIME & CPU Load:" >> "$report_file"
+    uptime >> "$report_file"
+
+    echo "Report generated: $report_file"
+}
+
+# Call the function
+generate_report
